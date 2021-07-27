@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "foxhole-data",
+  "private_key_id": "365f75e26908d3e8849721320667f4c4f0c480b7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC2Z9YgxeAFWAWp\nIboEeDkDwFskuX5h58d68/G4Nb9WrgVmN6sT2WsLgCCAvuw4dqnpT0uoyeIzf6us\nDo8wfk6P9kBS0nLgueVeCuIilDJ64M2taLvB6DZHNn/DHyVSTK+b3O9VN13zl0BV\nZtzNUgoi7pzmwM64a/8R4SZ5t6OQmPemIrDyqESrQ/3W5CHPAFLc8HSRTv5NqLab\nE2VD2QpByyVRfezLStagPr4Mb1p7FDHFh+B0izX73qZMEKuANPVHOcQXp+TsyvzB\nHPfwalm4TkOhFdzGooc5dfR6G1cXFdjlm+z2apcmRIbiMlItUjfPaw3/JZY2aA67\nsoQiaInJAgMBAAECggEADb3vKX8q2FA4NfSk5GEPz47qdu70HOlms4ZFFc8TzBKW\ndMvZG0jYGhDUMgrgNkVHWfzHuw7BmEZkLzVWF43OeqVPVYYGElTi+TWp8Xe3gV8m\nE6xGJ+7IBw+tqqwyJjwBh2Uq0UFXdkp09fImzJ+jhJv0LWTFdiqpt+W93bHmdFZX\nPfyMCztyCw1L7VL7gg70nmC/n5e7dcHwE/HCUfG/mniyUjVqakhGEJVf/KGjg4vk\n5YX8xmdSvXYnMQgfoF9PqYukuRYoCuwaZQs9H+Ndxml+otLQpucep71cjaw7b6gb\nzAqAHdSmL6bApa1TLdhHRP0ushBAWQHXKzhC8stH8QKBgQDoONfrIcvvYWwvXZyy\n7Ud4nd80boKFawcYYo7CbyT3wDvLuDPbO3s20/jT3rU0Rk0UVD9Pkxhol6zVFF2K\nOKE1cibHnmOfElGsnkpNuwbdDjjwzx2DXDG4pZXL8a/iSoKkZep10E+/X9VzHswH\n1jih03XpEzwfMWcaBsRfq+NScQKBgQDJFSwGQbYjZYAAKkc3CayHc5QKZVDn5Tj8\n7GEUXtvt1k/MwuE1rx5H/ewLCbEYD6U6VwIgQaS50QGR5l0zagV3XgMWQcFTsxmC\n45RDCNtfsSqMAAV7PiJbE9Asa3kUnHt8goeOc3Gk93D18Mg/dL2WDFGOZXtunpdk\n8dS75jYo2QKBgAWaIXNVrGLI+eAmpPoYCUpanKDaLaHkVBZ9gi4kmkKzy319oxqd\n07od4PnTfJGXRJLB+YkE5mjXh97YD+2eshzk9RSJuKOEwJ2mb+pyIZdBmZQNmwup\nNLXcoMF7wh92ZrJqlv5imRnnyPFvA8MIovMcc9K8mQ2zlmYlVaVtMx2xAoGAIDdo\nKkh06g7lByG+7y55meoGmfPJlp2/F6a3lw/rpJtlhaTjeDpqW5ZvLwWKfhRjoIk4\nKfrabXrzCXEjFY2y+oDxdatrUgGr4LCdnG/a1eYIrw2B01ENKBJwk+1UJN09W6F+\nHnCYkJmkW4MMUj5d8aBfoLTZpct67g1gzAoCO2ECgYBUfU8pP/W4zf2X/H3WHb8I\nBq1MtPWdaBAWlwWS8lftnwYrLOINetoFScpxbv16zAucZG4kefoCT6H1FIUCvRD/\nrd8MRmHXHPbIme+o8bCa0TYuCV3JKVvyDKTalvqupIiz/YBcpoTN5UDFeiToTO7C\nxvCQIYSMFDytWViCwj81Ug==\n-----END PRIVATE KEY-----\n",
+  "client_email": "foxhole-data-service-account@foxhole-data.iam.gserviceaccount.com",
+  "client_id": "100133897253461572603",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/foxhole-data-service-account%40foxhole-data.iam.gserviceaccount.com"
+}
