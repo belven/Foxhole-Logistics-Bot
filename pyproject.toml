@@ -7,7 +7,6 @@ authors = ["samking2 <<>>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 discord = "^1.7.3"
-replit = "^3.2.0"
 gspread = "^3.7.0"
 google-api-python-client = "^2.15.0"
 google-auth-oauthlib = "^0.4.4"
