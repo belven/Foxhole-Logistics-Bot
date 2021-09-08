@@ -1,6 +1,8 @@
 import os
 import discord
 import gspread
+import re
+from replit import db
 from discord.ext import tasks
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -15,19 +17,28 @@ client_gd = gspread.authorize(creds)
 
 client = discord.Client()
 
-servers = { { 'server' : "S.H.I.E.L.D.", 'channel' : "shield-clan-chat"} }
+shield = { 'server' : 'S.H.I.E.L.D.', 'channel' : 'shield-clan-chat'}
 
-def report_data(channel):
+sheet_names = {}
+sheet_names[0] = {'Name' : 'W_Frontlines', 'Sheet' : 0 }
+sheet_names[1] = {'Name' : 'W_Valuables', 'Sheet' : 1 }
+sheet_names[2] = {'Name' : 'SF_Frontlines', 'Sheet' : 2}
+sheet_names[3] = {'Name' : 'SF_Valuables', 'Sheet' : 3}
+
+def report_data(channel, sheet_index):
     table_data = None
     sheet = client_gd.open('SHIELD STOCKPILES')
-    sheet_instance = sheet.get_worksheet(2)
+    index = get_sheet_index(sheet_index)
+    sheet_instance = sheet.get_worksheet(index)
     records_data = sheet_instance.get_all_records()
 
     for data_row in records_data:
         name = data_row['Name']
         amount_needed = data_row['Amount Needed']
+        stock_type = data_row['Type']
+        is_vehicle = stock_type == 'Vehicle' or stock_type == 'Vehicles Crated'
 
-        if amount_needed > 0:
+        if amount_needed > 0 and not is_vehicle:
             if name is None:
                 name = ''
 
@@ -43,6 +54,17 @@ def report_data(channel):
     
     return table_data
 
+def get_sheet_index(location):
+
+    for data_row in sheet_names:
+        name = sheet_names[data_row]['Name']
+
+        if name.lower() == location.lower():
+            return int(sheet_names[data_row]['Sheet'])
+
+
+def slipt_by_sapce(text):
+    return re.findall(r'\S+', text)
 
 def get_server_channel_id(server_in, channel_in):
     for server in client.guilds:
@@ -53,24 +75,20 @@ def get_server_channel_id(server_in, channel_in):
     return ''   
     
 
+def report_sheets():
+    text = ''
+
+    for data_row in sheet_names:
+        name = sheet_names[data_row]['Name']
+        sheet = sheet_names[data_row]['Sheet']
+        text = text + '\n'
+        text = text + name + ' ' + str(sheet)
+    
+    return text
+
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-    report_data_loop.start()
-
-
-# Every 6 hours
-@tasks.loop(seconds=21600.0)
-async def report_data_loop():
-  channel_id = get_server_channel_id("S.H.I.E.L.D.", "shield-clan-chat")
-  channel = client.get_channel(channel_id)
-  data = report_data(channel)
-  message_data = '\n'
-
-  for md in data:
-    message_data = message_data + md + '\n'
-
-  await channel.send(message_data)
 
 
 @client.event
@@ -79,16 +97,26 @@ async def on_message(message):
         return
     if message.content.startswith('!test'):
         await message.channel.send('Do not test me!')
-    if message.content.startswith('!report_stock'):
-        data = report_data(message.channel)
+    if (message.content.startswith('!report_stock_test')):
+        location = slipt_by_sapce(message.content)[1]
+        data = report_data(message.channel, location)
         message_data = '\n'
 
         for md in data:
           message_data = message_data + md + '\n'
 
+        await message.author.send(message_data)
+    elif(message.content.startswith('!report_stock')):
+        location = slipt_by_sapce(message.content)[1]
+        data = report_data(message.channel, location)
+        message_data = '\n'
+
+        for md in data:
+            message_data = message_data + md + '\n'
+
         await message.channel.send(message_data)
-
-
-my_secret = 'ODY4ODI0NjIzNDk0NTk0NTkw.YP1R_A.8wthZjnflM9Ch4rYCJDPKvJsGQA'
+    elif(message.content.startswith('!report_sheets')):
+        text = report_sheets()
+        await message.channel.send(text)
 
 client.run(my_secret)
